@@ -1,0 +1,80 @@
+#+TITLE: Wonderful Wombat
+#+AUTHOR:
+#+DATE:
+
+A project to compare JavaScript pako and Go compression/flate implementations.
+
+** Overview
+
+This project demonstrates the compatibility between JavaScript's pako library and Go's standard compression packages. It provides a CLI tool that compresses data with pako and a Go program that can decompress the data.
+
+** Installation
+
+#+begin_src bash
+# Install globally
+pnpm install -g wonderfulwombat
+#+end_src
+
+** Usage
+
+*** Command Line
+
+#+begin_src bash
+# Compress a file
+wonderfulwombat compress -i input.txt -o output.txt
+
+# Compress from stdin to stdout
+cat input.txt | wonderfulwombat compress > output.txt
+
+# Specify compression format
+wonderfulwombat compress -i input.txt -o output.txt -f gzip
+
+# Specify output encoding
+wonderfulwombat compress -i input.txt -o output.txt -e hex
+#+end_src
+
+*** Options
+
+- ~-i, --input <file>~: Input file (defaults to stdin)
+- ~-o, --output <file>~: Output file (defaults to stdout)
+- ~-f, --format <format>~: Compression format (deflate, raw, gzip), default: deflate
+- ~-e, --encoding <encoding>~: Output encoding (base64, hex, binary), default: base64
+- ~-v, --verbose~: Enable verbose output
+
+** Go Decompressor
+
+A Go implementation is available to decompress data compressed by pako in Wonderful Wombat.
+
+#+begin_src bash
+# Build the Go decompressor
+go build -o wonderfulwombat-go
+
+# Decompress a file
+./wonderfulwombat-go -i compressed.txt -o decompressed.txt
+#+end_src
+
+** Compatibility
+
+This project demonstrates interoperability between:
+- JavaScript's pako library (for compression)
+- Go's standard compression packages (for decompression)
+
+It shows how data compressed with pako can be properly decompressed with Go's native libraries.
+
+** Development
+
+This project uses ~just~ for task automation. Run ~just~ to see available commands.
+
+#+begin_src bash
+# Setup the project
+just setup
+
+# Run tests
+just test
+
+# Clean up
+just clean
+
+# Full end-to-end test (setup, test, cleanup)
+just e2e
+#+end_src
