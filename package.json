@@ -1,0 +1,25 @@
+{
+  "name": "wonderfulwombat",
+  "version": "1.0.0",
+  "description": "A tool for compression using pako",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "node --test src/test"
+  },
+  "keywords": ["pako", "compression", "deflate", "zlib"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "bin": {
+    "wonderfulwombat": "./src/index.js"
+  }
+}
